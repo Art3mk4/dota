@@ -7,7 +7,7 @@ get_header(); ?>
 					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 						<div class="text-center">
 							<div id="betting">
-								<img class="img-responsive"src="<?php echo get_template_directory_uri()?>/images/esport-betting.png" />
+								<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/esport-betting.png" />
 							</div>
 							<div id="love-dollars">
 								<h1 class="color-white uppercase">
@@ -42,7 +42,7 @@ get_header(); ?>
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-sm-6">
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-6">
 						<div class="round hot-fire">
 							<div class="text-middle circle-text">
 								$18 mln.
@@ -50,7 +50,7 @@ get_header(); ?>
 						</div>
 						<div class="fire-text">won by Dota II championship participants in 2015</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-6">
 						<div class="round hot-fire">
 							<div class="text-middle circle-text">
 								$600 000
@@ -60,7 +60,7 @@ get_header(); ?>
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-6">
 						<div class="round cold-fire">
 							<div class="text-middle circle-text">
 								Up to <br /> $50 000
@@ -68,7 +68,7 @@ get_header(); ?>
 						</div>
 						<div class="fire-text">average salary of skilled cyber coaches</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-6">
 						<div class="round cold-fire">
 							<div class="text-middle circle-text">
 								No 1
@@ -98,20 +98,32 @@ get_header(); ?>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
-						<div id="footer-block" class="box">
-							<div id="papyrus" class="text-center">
-								<div id="papyrus-text">
-									<p>Are you ready to convert your passion to online games into dollars?</p>
+						<div id="footer-block" class="container">
+							<div id="papyrus" class="text-center row">
+								<div class="col-md-8">
+									<div id="papyrus-text">
+										<p>Are you ready to convert your passion to online games into dollars?</p>
+									</div>
+									<div id="download-3">
+										<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+											Buy now for only <span class="color-orange">$9</span>
+										</a>
+									</div>
+									<div id="social-buttons">
+										<div id="social-buttons-text">
+											Join us:
+										</div>
+										<ul id="social-links">
+											<li class="facebook"><a class="fa fa-facebook"></a></li>
+											<li class="twitter"><a class="fa fa-twitter"></a></li>
+											<li class="instagram"><a class="fa fa-instagram"></a></li>
+										</ul>
+									</div>
 								</div>
-								<div id="download-3">
-									<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
-										Buy now for only <span class="color-orange">$9</span>
-									</a>
-								</div>
-								<div id="social-buttons">
-									<div id="facebook"></div>
-									<div id="twitter"></div>
-									<div id="instagram"></div>
+								<div class="col-md-4">
+									<div id="esports-guide">
+										<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
+									</div>
 								</div>
 							</div>
 						</div>
@@ -120,8 +132,8 @@ get_header(); ?>
 			</div>
 		</div>
 		<div id="footer-bottom">
-			<div class="text-center">
-				<span>© 2015 eSports Betting Club</span>
+			<div id="footer-text"class="text-center">
+				<p>© 2015 eSports Betting Club</p>
 			</div>
 		</div>
 	</footer>
