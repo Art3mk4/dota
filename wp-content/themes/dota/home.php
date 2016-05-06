@@ -1,0 +1,128 @@
+<?php
+
+get_header(); ?>
+	<header id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<div class="text-center">
+							<div id="betting">
+								<img class="img-responsive"src="<?php echo get_template_directory_uri()?>/images/esport-betting.png" />
+							</div>
+							<div id="love-dollars">
+								<h1 class="color-white uppercase">
+									<strong>Do You Want to Turn Your Love for Online Games <span class="color-orange">into Dollars?</span>
+									</strong>
+								</h1>
+								<h3 class="color-white">Just choose your favorite game, make bets and win good money!</h3>
+							</div>
+							<div id="download">
+								<h3 class="color-orange uppercase">Download our Guide and learn:</h3>
+							</div>
+							<div id="choose-bookmaker">
+								<ul class="color-white list-unstyled">
+									<li><i></i>How to choose a bookmaker and bet</li>
+									<li><i></i>Secrets of successful online betting</li>
+									<li><i></i>How index instability helps you to win</li>
+									<li><i></i>How to gain hundreds of thousands dollars annually</li>
+									<li><i></i>Success stories of experienced betters</li>
+								</ul>
+							</div>
+							<div id="download-2">
+								<a href="<?php echo get_permalink(7)?>"class="btn download-button text-center">
+									Buy now for only <span class="color-orange">$9</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</header>
+	<div id="main">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-sm-6">
+					<div class="col-sm-6">
+						<div class="round hot-fire">
+							<div class="text-middle circle-text">
+								$18 mln.
+							</div>
+						</div>
+						<div class="fire-text">won by Dota II championship participants in 2015</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="round hot-fire">
+							<div class="text-middle circle-text">
+								$600 000
+							</div>
+						</div>
+						<div class="fire-text">annual income of some StarCraft players</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="col-sm-6">
+						<div class="round cold-fire">
+							<div class="text-middle circle-text">
+								Up to <br /> $50 000
+							</div>
+						</div>
+						<div class="fire-text">average salary of skilled cyber coaches</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="round cold-fire">
+							<div class="text-middle circle-text">
+								No 1
+							</div>
+						</div>
+						<div class="fire-text">rating of eSports betting by 2018 (even football bets left behind)</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="plinth-block" class="box">
+						<div id='plinth-text' class="text-center color-white">
+							<p>eSports is getting more and more popular nowadays with lots of international championships being held all over the world. These events attract thousands of betters who win millions of dollars in tote every time. The revenues of online games industry are growing much faster than those of sport industry.</p>
+							<p>Numerous bookmakers offer betting for most powerful championships, such as Dota, StarCraft, League of Legends, etc. The cyber market is young and rapidly growing, so indexes are quite instable yet. If you download our Guide, you’ll learn how to use this disbalance in your favor and earn good money on it.
+
+							Now you can combine moneymaking and watching your favorite games in real time!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main-border"></div>
+	</div>
+	<footer>
+		<div id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div id="footer-block" class="box">
+							<div id="papyrus" class="text-center">
+								<div id="papyrus-text">
+									<p>Are you ready to convert your passion to online games into dollars?</p>
+								</div>
+								<div id="download-3">
+									<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+										Buy now for only <span class="color-orange">$9</span>
+									</a>
+								</div>
+								<div id="social-buttons">
+									<div id="facebook"></div>
+									<div id="twitter"></div>
+									<div id="instagram"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer-bottom">
+			<div class="text-center">
+				<span>© 2015 eSports Betting Club</span>
+			</div>
+		</div>
+	</footer>
+<?php get_footer(); ?>

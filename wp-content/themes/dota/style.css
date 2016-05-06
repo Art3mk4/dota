@@ -1,0 +1,195 @@
+/*
+Theme Name: dota themes
+Theme URI: https://wordpress.org/themes/twentyfifteen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
+Version: 1.5
+*/
+
+@font-face {
+  font-family: 'Papyrus';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Papyrus Regular'), local('Papyrus-Regular'), url('fonts/papyrus.ttf');
+}
+body {
+	font-family: 'Open Sans';
+}
+#header {
+    background: url('images/-6.png') no-repeat center;
+    background-size: cover;
+}
+#main {
+	background: url('images/content.png') no-repeat top center;
+    background-size: cover;
+}
+#footer {
+    background: url('images/-53.png') no-repeat center;
+    background-size: cover;
+}
+#main-border {
+	background: url('images/-7--2.png') no-repeat center;
+	background-size: cover;
+	height: 4px;
+}
+#footer-bottom {
+	background: url('images/-49.png') no-repeat center;
+	background-size: cover;
+}
+#footer-bottom span {
+	color: white;
+	font-family: OpenSans;
+	font-size: 14px;
+}
+#betting {
+	
+}
+#download h3 {
+	font-style: italic;
+}
+#choose-bookmaker li {
+	font-style: italic;
+	font-size: 25px;
+}
+.download-button {
+	background: url('images/-30--4.png') no-repeat center;
+	background-size: cover;
+	text-shadow: 0 1px 0 rgba(66, 16, 8, 0.75);
+	font-size: 15px;
+	font-weight: 700;
+	font-style: italic;
+	color: white;
+	text-transform: uppercase;
+	height: 33px;
+}
+.download-button:hover {
+	background: url('images/-30--5.png') no-repeat center;
+	background-size: cover;
+	color: white;
+}
+.download-button:hover .color-orange {
+	color:white;
+}
+@media (min-width: 480px) {
+	.download-button {
+		height: 50px;
+		font-size: 25px;		
+	}
+}
+.color-orange {
+	color: #f0a856;
+}
+.color-white {
+	color: white;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+h1 {
+	font-size: 30px;
+}
+ul li i:before {
+	padding-right: 5px;
+	color: #f0a856;
+	content: "\2022";
+}
+.hot-fire {
+	background: url('images/circle-hot.png') no-repeat center top;
+	background-size: cover;
+}
+.hot-fire:hover {
+	background: url('images/circle-hot.png') no-repeat center bottom;
+	background-size: cover;
+}
+.cold-fire {
+	background: url('images/circle-cold.png') no-repeat center top;
+	background-size: cover;
+}
+.cold-fire:hover {
+	background: url('images/circle-cold.png') no-repeat center bottom;
+	background-size: cover;
+}
+.round {
+	display: inline-block;
+	height: 180px;
+	width: 180px;
+	padding: auto;
+}
+.circle-cold {
+	background: url('images/-35--5.png') no-repeat center;
+	background-size: cover;
+	height: 180px;
+}
+.circle-hot {
+	background: url('images/-32--3.png') no-repeat center;
+	background-size: cover;
+	height: 180px;
+}
+.fire-text {
+	text-shadow: 0 2px 0 rgba(0, 3, 1, 0.75);
+	color: #f0f3f5;
+	font-family: Papyrus;
+	font-size: 23px;
+	font-weight: 400;
+	line-height: 35px;
+}
+.circle-text {
+	color: black;
+	font-family: Papyrus;
+	font-size: 23px;
+	font-weight: 400;
+	line-height: 35px;	
+}
+#plinth-text {
+	padding-top: 62px;
+	padding-bottom: 74px;
+	padding-left: 83px;
+	padding-right: 111px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 35px;
+}
+#plinth-block {
+	box-shadow: 0 0 10px 0 black;
+	background-color: rgba(37, 95, 162, 0.2);
+}
+.text-middle {
+	display: table-cell;
+	vertical-align: middle;
+	height: 180px;
+	width: 180px;
+	float: none;
+	padding: 0 auto;
+}
+#footer-block {
+	margin-bottom: 80px;
+	box-shadow: 0 0 10px 0 black;
+}
+#papyrus {
+	position: relative;
+    top: 40px;
+	background: url('images/papyrus.png') no-repeat center;
+	background-size: cover;
+}
+#papyrus-text {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+	color: #5f3606;
+	font-family: Papyrus;
+	font-size: 50px;
+	font-weight: 400;
+	line-height: 50px;
+}
+#social-buttons {
+
+}
+#facebook {
+	background: url('images/soc.png') no-repeat center top;
+	background-size: cover; 
+}
+#twitter {
+
+}
+#instagramm {
+
+}
