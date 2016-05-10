@@ -29,9 +29,9 @@ body {
     background: url('images/-.png') no-repeat center;
     background-size: cover;
 }
-@media (min-width: 480px) {
+@media (min-width: 670px) {
 	#footer {
-		background: url('images/-53.png') no-repeat center;
+		background-image: url('images/-53.png');
 	}
 }
 #main-border {
@@ -78,12 +78,22 @@ body {
 	background: url('images/-30--4.png') no-repeat center;
 	background-size: cover;
 	text-shadow: 0 1px 0 rgba(66, 16, 8, 0.75);
-	font-size: 15px;
+	font-size: 11px;
 	font-weight: 700;
 	font-style: italic;
 	color: white;
 	text-transform: uppercase;
+	line-height: 18px;
 	height: 33px;
+	width: 185px
+}
+@media (min-width: 480px) {
+	.download-button {
+		line-height: 36px;
+		height: 50px;
+		width: 290px;
+		font-size: 15px;
+	}
 }
 .download-button:hover {
 	background: url('images/-30--5.png') no-repeat center;
@@ -92,12 +102,6 @@ body {
 }
 .download-button:hover .color-orange {
 	color:white;
-}
-@media (min-width: 480px) {
-	.download-button {
-		height: 50px;
-		font-size: 25px;		
-	}
 }
 .color-orange {
 	color: #f0a856;
@@ -219,27 +223,40 @@ ul li i:before {
 	}
 }
 #footer-block {
-	margin-top: 80px;
-	margin-bottom: 80px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+@media (min-width: 480px) {
+	#footer-block {
+		margin-top: 80px;
+		margin-bottom: 80px;
+	}
 }
 #papyrus {
 	display: inline-block;
 	background: url('images/-10.png') no-repeat center;
 	background-size: cover;
 }
-@media (min-width: 480px) {
+@media (min-width: 670px) {
 	#papyrus {
 		background: url('images/papyrus.png') no-repeat center;
 	}
 }
 #papyrus-text {
-	padding-top: 125px;
+	padding-top: 0px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
 	color: #5f3606;
 	font-family: Papyrus;
-	font-size: 50px;
+	font-size: 24px;
 	font-weight: 400;
-	line-height: 50px;
+	
+}
+@media (min-width: 480px) {
+	#papyrus-text {
+		font-size: 50px;
+		padding-top: 125px;
+		line-height: 50px;
+	}
 }
 #social-buttons {
 	display: inline-block;
@@ -289,6 +306,9 @@ ul li i:before {
 }
 #esports-guide {
 	padding-top: 40px;
+}
+#esports-guide-mobile {
+	padding-top: 30px;
 }
 #footer-text {
 
