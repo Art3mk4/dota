@@ -13,6 +13,12 @@ Version: 1.5
   font-weight: 400;
   src: local('Papyrus Regular'), local('Papyrus-Regular'), url('fonts/papyrus.ttf');
 }
+@font-face {
+  font-family: 'Defused';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Defused'), local('Defused'), url('fonts/defused.ttf');
+}
 body {
 	font-family: 'Open Sans';
 }
@@ -52,9 +58,13 @@ body {
 }
 #betting {
 	padding-top: 46px;
+	padding-bottom: 25px;
 }
-#love-dollars {
-	padding-top: 25px;
+#betting h1 {
+	/*font-family: Defused;*/
+}
+.defused {
+	font-size: 85px;
 }
 #download {
 	padding-top: 30px;
@@ -191,15 +201,15 @@ ul li i:before {
 }
 #plinth-text {
 	text-align: left;
-	font-size: 20px;
+	font-size: 15px;
 	font-weight: 400;
 	line-height: 35px;
 }
 @media(min-width: 480px) {
 	#plinth-text {
 		text-align: center;
-		padding-top: 62px;
-		padding-bottom: 74px;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		padding-left: 83px;
 		padding-right: 111px;
 	}
@@ -239,7 +249,7 @@ ul li i:before {
 }
 @media (min-width: 670px) {
 	#papyrus {
-		background: url('images/papyrus.png') no-repeat center;
+		background-image: url('images/papyrus.png');
 	}
 }
 #papyrus-text {
@@ -249,7 +259,6 @@ ul li i:before {
 	font-family: Papyrus;
 	font-size: 24px;
 	font-weight: 400;
-	
 }
 @media (min-width: 480px) {
 	#papyrus-text {
@@ -310,6 +319,33 @@ ul li i:before {
 #esports-guide-mobile {
 	padding-top: 30px;
 }
-#footer-text {
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}
 
+/* buy page*/
+
+#buy-header {
+	background: url('images/content.png') no-repeat top center;
+    background-size: cover;
+}
+#papyrus-text-thanks {
+	padding-top: 0px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+	color: #5f3606;
+	font-family: Papyrus;
+	font-size: 30px;
+	font-weight: 400;
+}
+@media (min-width: 480px) {
+	#papyrus-text-thanks {
+		font-size: 30px;
+		padding-top: 50px;
+		line-height: 50px;
+	}
+}
+#buy-main {
+	background: url('images/-.png') no-repeat top center;
+	background-size: cover;
 }
