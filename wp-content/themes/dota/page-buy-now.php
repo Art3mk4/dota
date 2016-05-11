@@ -59,62 +59,133 @@ get_header(); ?>
                         and start betting right now!
                 </div>
             </div>
-            <div class="col-lg-8 col-centered">
-                <div class="odd-service display-table-cell">
-                    <div class="logo">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-15-.png" />
+            <div class="col-lg-8 col-centered hidden-sm hidden-xs">
+                <table>
+                    <tr class="row odd-service">
+                        <th class="col-md-6">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-15-.png" />
+                        </th>
+                        <th class="col-md-6 color-white service-text">
+                            Pinnacle - the most popular betting office
+                        </th>
+                        <th class="col-md-6">
+                            <a class="btn register-button color-white">Register Now</a>
+                        </th>
+                    </tr>
+                    <tr class="row even-service">
+                        <th class="col-md-6 logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-16.png" />
+                        </th>
+                        <th class="col-md-6 color-white service-text">
+                            Betway - one of the biggest European betting offices 
+    for eSports and poker
+                        </th>
+                        <th class="col-md-6">
+                            <a class="btn register-button color-white">Register Now</a>
+                        </th>
+                    </tr>
+                    <tr class="row odd-service">
+                        <th class="col-md-6 logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-17.png" />
+                        </th>
+                        <th class="col-md-6 color-white service-text">
+                            Egamingbets - specializes in eSports betting
+                        </th>
+                        <th class="col-md-6">
+                            <a class="btn register-button color-white">Register Now</a>
+                        </th>
+                    </tr>
+                    <tr class="row even-service">
+                        <th class="col-md-6 logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-18.png" />
+                        </th>
+                        <th class="col-md-6 color-white service-text">
+                            Bet365 - this UK service currently has more 
+than 18 million registered users
+                        </th>
+                        <th class="col-md-6">
+                            <a class="btn register-button color-white">Register Now</a>
+                        </th>
+                    </tr>
+                    <tr class="row odd-service">
+                        <th class="col-md-6 logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-19.png" />
+                        </th>
+                        <th class="col-md-6 color-white service-text">
+                            William Hill - now it is one of the biggest betting offices in the UK
+                        </th>
+                        <th class="col-md-6">
+                            <a class="btn register-button color-white">Register Now</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="visible-sm visible-xs">
+                <div class="odd-service">
+                    <div class="col-xs-5 vcenter">
+                        <div class="logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-15-.png" />
+                        </div>
+                        <div class="service-text-mobile color-white">
+                            Pinnacle - the most popular betting office
+                        </div>
                     </div>
-                    <div class="service-text color-white">
-                        Pinnacle - the most popular betting office
-                    </div>
-                    <div class="btn-wrapper">
-                        <a class="btn register-button color-white">Register Now</a>
+                    <div class="btn-wrapper col-xs-5 vcenter">
+                        <a class="btn register-button-mobile color-white">Register Now</a>
                     </div>
                 </div>
-                <div class="even-service display-table-cell">
-                    <div class="logo">
+                <div class="odd-service">
+                    <div class="col-xs-5 vcenter">
+                        <div class="logo">
                             <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-16.png" />
                         </div>
-                        <div class="service-text color-white">
+                        <div class="service-text-mobile color-white">
                             Betway - one of the biggest European betting offices 
     for eSports and poker
                         </div>
-                    <div class="btn-wrapper">
-                        <a class="btn register-button color-white">Register Now</a>
+                    </div>
+                    <div class="btn-wrapper col-xs-5 vcenter">
+                        <a class="btn register-button-mobile color-white">Register Now</a>
                     </div>
                 </div>
-                <div class="odd-service display-table-cell">
-                    <div class="logo">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-17.png" />
+                <div class="odd-service">
+                    <div class="col-xs-5 vcenter">
+                        <div class="logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-17.png" />
+                        </div>
+                        <div class="service-text-mobile color-white">
+                            Egamingbets - specializes in eSports betting
+                        </div>
                     </div>
-                    <div class="service-text color-white">
-                        Egamingbets - specializes in eSports betting
-                    </div>
-                    <div class="btn-wrapper">
-                        <a class="btn register-button color-white">Register Now</a>
-                    </div>
-                </div>
-                <div class="even-service display-table-cell">
-                    <div class="logo">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-18.png" />
-                    </div>
-                    <div class="service-text color-white">
-                        Bet365 - this UK service currently has more 
-than 18 million registered users
-                    </div>
-                    <div class="btn-wrapper">
-                        <a class="btn register-button color-white">Register Now</a>
+                    <div class="btn-wrapper col-xs-5 vcenter">
+                        <a class="btn register-button-mobile color-white">Register Now</a>
                     </div>
                 </div>
-                <div class="odd-service display-table-cell">
-                    <div class="logo">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-19.png" />
+                <div class="odd-service">
+                    <div class="col-xs-5 vcenter">
+                        <div class="logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-18.png" />
+                        </div>
+                        <div class="service-text-mobile color-white">
+                            Bet365 - this UK service currently has more 
+    than 18 million registered users
+                        </div>
                     </div>
-                    <div class="service-text color-white">
-                        William Hill - now it is one of the biggest betting offices in the UK
+                    <div class="btn-wrapper col-xs-5 vcenter">
+                        <a class="btn register-button-mobile color-white">Register Now</a>
                     </div>
-                    <div class="btn-wrapper">
-                        <a class="btn register-button color-white">Register Now</a>
+                </div>
+                <div class="odd-service">
+                    <div class="col-xs-5 vcenter">
+                        <div class="logo">
+                            <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-19.png" />
+                        </div>
+                        <div class="service-text-mobile color-white">
+                            William Hill - now it is one of the biggest betting offices in the UK
+                        </div>
+                    </div>
+                    <div class="btn-wrapper col-xs-5 vcenter">
+                        <a class="btn register-button-mobile color-white">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -122,6 +193,10 @@ than 18 million registered users
     </div>
 </div>
 <footer>
-    <div id="buy-footer"></div>
+    <div id="footer-bottom">
+        <div id="footer-text"class="text-center">
+            <p>© 2015 eSports Betting Club</p>
+        </div>
+    </div>
 </footer>
 <?php get_footer(); ?>
