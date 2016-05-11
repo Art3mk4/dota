@@ -349,3 +349,49 @@ ul li i:before {
 	background: url('images/-.png') no-repeat top center;
 	background-size: cover;
 }
+#can-text {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	text-shadow: 0.5px 0.9px 0 rgba(255, 255, 255, 0.75);
+	font-size: 20px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+.odd-service {
+	background: url('images/-1--2.png') no-repeat top center;
+	background-size: cover;
+}
+.display-table-cell {
+	padding: 10px;
+}
+.display-table-cell div {
+	display: inline-block;
+	vertical-align: middle;
+}
+.logo {
+	/*display: inline-block;
+	vertical-align: middle;*/
+	width: 140px;
+}
+.service-text {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 10px;
+	width: 340px;
+	text-align: left;
+}
+.btn-wrapper {
+	/*float: right;*/
+	padding: 5px;
+	/*display: inline-block;*/
+}
+.register-button {
+	height: 55px;
+	width: 160px;
+	background: url('images/register-button.png');
+	background-size: cover;
+	text-shadow: 0.5px 0.9px 0 rgba(1, 1, 1, 0.75);
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 40px;
+}
