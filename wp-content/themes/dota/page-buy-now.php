@@ -60,14 +60,14 @@ get_header(); ?>
                 </div>
             </div>
             <div class="col-lg-8 col-centered">
-                <div class="odd-service display-table-cell row">
+                <div class="odd-service display-table-cell">
                     <div class="logo">
                         <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-15-.png" />
                     </div>
                     <div class="service-text color-white">
                         Pinnacle - the most popular betting office
                     </div>
-                    <div class="btn-wrapper pulll-right">
+                    <div class="btn-wrapper pull-right">
                         <a class="btn register-button color-white">Register Now</a>
                     </div>
                 </div>
