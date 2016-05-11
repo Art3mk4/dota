@@ -67,7 +67,7 @@ get_header(); ?>
                     <div class="service-text color-white">
                         Pinnacle - the most popular betting office
                     </div>
-                    <div class="btn-wrapper pull-right">
+                    <div class="btn-wrapper">
                         <a class="btn register-button color-white">Register Now</a>
                     </div>
                 </div>
