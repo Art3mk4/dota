@@ -1,0 +1,28 @@
+
+function wppay_plugin_handler(){
+
+	if( !isset($_POST['wppay_do_pay']) ) return false;
+
+	$amount   = get_site_option( 'pay-pricing' ); // получение цены за товар
+	$name     = ''; // наименование товара или заказа
+	$desc     = ''; // описание товара
+	$email    = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
+
+	if( !$email ){
+		$_POST['error_msg'] = 'The Email was filled wrong!';
+		return false;
+	}
+
+	$_POST = array(
+		'email'              => $email,
+		'type'               => 'paypal',
+		'currency'           => 'USD',
+		'amount'             => $amount,
+		'name'               => $name,
+		'desc'               => $desc,
+		'wppay_pay_single'   => ''
+	);
+
+	do_action('wppay_redirect_to_payment_single');
+}
+add_action('wp', 'wppay_plugin_handler');
