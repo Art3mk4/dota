@@ -100,37 +100,39 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-xs-12">
 						<div id="footer-block" class="container">
-							<div id="papyrus" class="text-center row">
-								<div class="col-md-4 visible-sm visible-xs">
-									<div id="esports-guide-mobile">
-										<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
-									</div>
-								</div>
-								<div class="col-md-8">
-									<div id="papyrus-text">
-										<p>Are you ready to convert your passion to online games into dollars?</p>
-									</div>
-									<div id="download-3">
-										
-											<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
-												Buy now for only <span class="color-orange">$9</span>
-											</a>
-										
-									</div>
-									<div id="social-buttons">
-										<div id="social-buttons-text">
-											Join us:
+							<div id="papyrus" class="text-center">
+								<div class="row">
+									<div class="col-md-4 visible-sm visible-xs">
+										<div id="esports-guide-mobile">
+											<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
 										</div>
-										<ul id="social-links">
-											<li class="facebook"><a class="fa fa-facebook"></a></li>
-											<li class="twitter"><a class="fa fa-twitter"></a></li>
-											<li class="instagram"><a class="fa fa-instagram"></a></li>
-										</ul>
 									</div>
-								</div>
-								<div class="col-md-4 hidden-sm hidden-xs">
-									<div id="esports-guide">
-										<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
+									<div class="col-md-8">
+										<div id="papyrus-text">
+											<p>Are you ready to convert your passion to online games into dollars?</p>
+										</div>
+										<div id="download-3">
+											
+												<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+													Buy now for only <span class="color-orange">$9</span>
+												</a>
+											
+										</div>
+										<div id="social-buttons">
+											<div id="social-buttons-text">
+												Join us:
+											</div>
+											<ul id="social-links">
+												<li class="facebook"><a class="fa fa-facebook"></a></li>
+												<li class="twitter"><a class="fa fa-twitter"></a></li>
+												<li class="instagram"><a class="fa fa-instagram"></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-md-4 hidden-sm hidden-xs">
+										<div id="esports-guide">
+											<img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
+										</div>
 									</div>
 								</div>
 							</div>
