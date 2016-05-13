@@ -201,51 +201,51 @@ function wppay_current_pay_settings($type)
     return $args;
 }
 
-function wppay_send_mail($email, $subject, $html, $from = '', $name = '' ){
+function wppay_send_mail($email, $subject, $html, $from = '', $name = '' )
+{
+    $args = get_site_option('wppay_mailgun_setting');
 
-	$args = get_site_option('wppay-mail-setting');
+    $domain = isset($args['domain']) ? $args['domain'] : '';
+    $api  = isset($args['api']) ? $args['api'] : '';
+    $logo = isset($args['logo']) ? $args['logo'] : '';
 
-	$api  = isset($args['api']) ? $args['api'] : '';
-	$logo = isset($args['logo']) ? $args['logo'] : '';
+    if ($from == '') {
+        $from = isset($args['from']) ? $args['from'] : 'mail@site.com';
+    }
+    if($name == '') {
+        $name = isset($args['name']) ? $args['name'] : 'name';
+    }
+    ob_start();?>
+	
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" height="72px" bgcolor="#000000" align="center">
+        <tbody>
+            <tr>
+                <td align="center">
+                    <a href="<?php echo home_url('/?email') ?>" target="_blank"><img border="0" src="<?php echo $logo ?>"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="background:#fff" align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="border:1px solid #ddd;padding:20px 23px">
+                    <?php echo $html ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <?php
+    $content = ob_get_contents();
+    ob_end_clean();
 
-	if($from == '')
-		$from = isset($args['from']) ? $args['from'] : 'mail@site.com';
-	if($name == '')
-		$name = isset($args['name']) ? $args['name'] : 'name';
+    $mail = \SendMail\SendMail::i();
+    $mail->message->to         = $email;
+    $mail->message->from_email = $from;
+    $mail->message->from_name  = $name;
+    $mail->message->subject    = $subject;
+    $mail->message->html       = $content;
 
-	ob_start();
-
-	?>
-	<table border="0" cellspacing="0" cellpadding="0" width="100%" height="72px" bgcolor="#000000" align="center">
-		<tbody>
-		<tr>
-			<td align="center">
-				<a href="<?php echo home_url('/?email') ?>" target="_blank"><img border="0" src="<?php echo $logo ?>"></a>
-			</td>
-		</tr>
-		</tbody>
-	</table>
-	<table style="background:#fff" align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
-		<tbody>
-		<tr>
-			<td style="border:1px solid #ddd;padding:20px 23px">
-				<?php echo $html ?>
-			</td>
-		</tr>
-		</tbody>
-	</table>
-	<?php
-
-	$content = ob_get_contents();
-	ob_end_clean();
-
-	$mail = \SendMail\SendMail::i();
-	$mail->message->to         = $email;
-	$mail->message->from_email = $from;
-	$mail->message->from_name  = $name;
-	$mail->message->subject    = $subject;
-	$mail->message->html       = $content;
-
-	$mail->send();
+    $mail->send();
 }
 add_action('wppay_send_mail', 'wppay_send_mail', 10, 3);

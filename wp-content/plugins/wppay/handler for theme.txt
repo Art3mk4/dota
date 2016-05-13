@@ -3,9 +3,9 @@ function wppay_plugin_handler(){
 
 	if( !isset($_POST['wppay_do_pay']) ) return false;
 
-	$amount   = get_site_option( 'pay-pricing' ); // получение цены за товар
-	$name     = ''; // наименование товара или заказа
-	$desc     = ''; // описание товара
+	$amount   = get_site_option( 'pay-pricing' ); // РїРѕР»СѓС‡РµРЅРёРµ С†РµРЅС‹ Р·Р° С‚РѕРІР°СЂ
+	$name     = ''; // РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР° РёР»Рё Р·Р°РєР°Р·Р°
+	$desc     = ''; // РѕРїРёСЃР°РЅРёРµ С‚РѕРІР°СЂР°
 	$email    = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
 
 	if( !$email ){

@@ -24,6 +24,7 @@ class Wpadmin extends Template
         $this->templList(
             array(
                 'dash'    => 'tmplDashboard',
+                'guide'   => 'tmplGuide',
                 'order'   => 'tmplOrder',
                 'paypal'  => 'tmplPayPal',
                 'mailgun' => 'tmplMailgun'
@@ -33,30 +34,35 @@ class Wpadmin extends Template
         $this->listMenu(
             array(
                 'dash' => array(
-                    'title'       => __('Dasboard', 'elp'),
-                    'description' => __('This displays the list of activities performed by elPay', 'elp'),
+                    'title'       => __('Dasboard', 'wppay'),
+                    'description' => __('This displays the list of activities performed by elPay', 'wppay'),
                     'icon'        => 'tachometer',
                     'separator'   => 'line'
                 ),
+                'guide' => array(
+                    'title'       => __('Guide settings', 'wppay'),
+                    'description' => __('Set options for guide'),
+                    'icon'        => 'usd'
+                ),
                 'order' => array(
-                    'title'       => __('Orders', 'sr'),
-                    'description' => __('List of Transactions', 'sr'),
+                    'title'       => __('Orders', 'wppay'),
+                    'description' => __('List of Transactions', 'wppay'),
                     'icon'        => 'list'
                 ),
                 'paypal' => array(
                     'title'       => __('PayPal', 'sr'),
-                    'description' => __('Setup up Your PayPal settings', 'sr'),
+                    'description' => __('Setup up Your PayPal settings', 'wppay'),
                     'icon'        => 'paypal'
                 ),
                 'mailgun' => array(
                     'title'       => __('Mailgun', 'sr'),
-                    'description' => __('Setup up Mailgun settings', 'sr'),
+                    'description' => __('Setup up Mailgun settings', 'wppay'),
                     'icon'        => 'envelope'
                 )
             )
         );
 
-        if (in_array($this->current, array('paypal', 'mailgun'))) {
+        if (in_array($this->current, array('paypal', 'mailgun', 'guide'))) {
             $this->catch_config();
         }
     }
@@ -130,8 +136,97 @@ class Wpadmin extends Template
      */
     public function tmplMailgun()
     {
-        ?>
-        <h1>Mailgun</h1>
+        $args = get_site_option('wppay_mailgun_setting');
+
+        $foo = array(
+            'domain' => array(
+               'name'         => __('Mailgun Domain name', 'wppay'),
+                'default'     => '',
+                'description' => __('Set up your Domain name', 'wppay')
+            ),
+            'api' => array(
+                'name'        => __('Mailgun api', 'wppay'),
+                'default'     => '',
+                'description' => __('Set up your Mailgun settings', 'wppay')
+            ),
+            'logo' => array(
+                'name'        => __('Logo', 'wppay'),
+                'default'     => '',
+                'description' => __('Logo to Header mail message', 'wppay')
+            ),
+            'from' => array(
+                'name'        => __('Email', 'wppay'),
+                'default'     => '',
+                'description' => __('Email to mail message', 'wppay')
+            ),
+            'name' => array(
+                'name'        => __('Name', 'wppay'),
+                'default'     => '',
+                'description' => __('Name to mail message', 'wppay')
+            )
+        );?>
+
+        <form action="" method="POST">
+            <?php wp_nonce_field('wppay_mailgun_config', 'wppay_setting_action'); ?>
+            <?php
+            foreach($foo as $key => $val) {
+                $this->textField(
+                    $key,
+                    array(
+                        'label'       => $val['name'],
+                        'id'          => $key,
+                        'value'       => isset($args[$key]) ? $args[$key] : $val['default'],
+                        'description' => $val['description'],
+                        'class'       => 'regular-text'
+                    )
+                );
+            }
+
+            $this->btn(
+                'sr-config-submit',
+                array(
+                    'id' => 'sr-config-submit'
+                )
+            );?>
+        </form>
+	<?php
+    }
+    
+    public function tmplGuide()
+    {
+        $args = get_site_option('wppay_guide_setting');
+
+        $foo = array(
+            'price' => array(
+                'name'         => __('Guide price', 'wppay'),
+                'default'     => '',
+                'description' => __('Set up price for Guide', 'wppay')
+            )
+        );?>
+
+        <form action="" method="POST">
+            <?php wp_nonce_field('wppay_guide_config', 'wppay_setting_action'); ?>
+            <?php
+            foreach($foo as $key => $val) {
+                $this->textField(
+                    $key,
+                    array(
+                        'label'       => $val['name'],
+                        'id'          => $key,
+                        'value'       => isset($args[$key]) ? $args[$key] : $val['default'],
+                        'description' => $val['description'],
+                        'class'       => 'regular-text'
+                    )
+                );
+            }
+
+            $this->btn(
+                'sr-config-submit',
+                array(
+                    'id' => 'sr-config-submit'
+                )
+            );?>
+        </form>
         <?php
     }
 
@@ -199,7 +294,35 @@ class Wpadmin extends Template
 
         if (wp_verify_nonce($_POST['wppay_setting_action'], 'wppay_paypal_config')) {
             wppay_pay_save_setting('paypal', $_POST);
-            $this->message = __('Paypal settings have been saved!', 'elp');
+            $this->message = __('Paypal settings have been saved!', 'wppay');
         }
+
+        if (wp_verify_nonce($_POST['wppay_setting_action'], 'wppay_mailgun_config')) {
+            $args = $this->fill(array('domain', 'api', 'logo', 'from', 'name'));
+
+            update_site_option('wppay_mailgun_setting', $args);
+            $this->message = __('Mailgun settings have been saved!', 'wppay');
+        }
+
+        if (wp_verify_nonce($_POST['wppay_setting_action'], 'wppay_guide_config')) {
+            $args = $this->fill(array('price'));
+            update_site_option('wppay_guide_setting', $args);
+            $this->message = __('Guide settings have been saved!', 'wppay');
+        }
+    }
+    
+    /**
+     * fill
+     * 
+     * @param type $params
+     * @return type
+     */
+    private function fill($params)
+    {
+        $args = array();
+        foreach ($params as $key) {
+            $args[$key] = isset($_POST[$key]) ? trim($_POST[$key]) : '';
+        }
+        return $args;
     }
 }
