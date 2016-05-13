@@ -155,57 +155,50 @@ function wppay_default_settings(){
 	);
 }
 
-function wppay_pay_settings( $type ){
+function wppay_pay_settings($type)
+{
+    $settings = get_site_option('wppay-settings');
+    $default = wppay_default_settings();
 
-	$settings = get_site_option('wppay-settings');
-
-	$default = wppay_default_settings();
-
-	if( isset($settings[$type]) && isset($default[$type]) ){
-
-		foreach( $default[$type]['fields'] as $key => $val ){
-			$default[$type]['fields'][$key] =
-				isset($settings[$type]['fields'][$key]) ?
-					$settings[$type]['fields'][$key] : $val;
-		}
-
-		return $default[$type];
+    if (isset($settings[$type]) && isset($default[$type])) {
+	foreach ($default[$type]['fields'] as $key => $val) {
+            $default[$type]['fields'][$key] =
+		isset($settings[$type]['fields'][$key]) ?
+                    $settings[$type]['fields'][$key] : $val;
 	}
+        return $default[$type];
+    }
 
-	return false;
+    return false;
 }
 
-function wppay_pay_save_setting( $type, $data ){
+function wppay_pay_save_setting($type, $data)
+{
+    $default = wppay_default_settings();
+    if (isset($default[$type])) {
+        foreach ($default[$type]['fields'] as $key => $val) {
+            $default[$type]['fields'][$key]['default'] =
+                isset($data[$key]) ?
+                    trim($data[$key]) : $val['default'];
+        }
+        update_site_option('wppay-settings', $default);
+    }
 
-	$default = wppay_default_settings();
-
-	if( isset($default[$type]) ){
-
-		foreach( $default[$type]['fields'] as $key => $val ){
-			$default[$type]['fields'][$key]['default'] =
-				isset($data[$key]) ?
-					trim($data[$key]) : $val['default'];
-		}
-
-		update_site_option('wppay-settings', $default);
-	}
-
-	return false;
+    return false;
 }
 
-function wppay_current_pay_settings( $type ){
+function wppay_current_pay_settings($type)
+{
+    $settings = wppay_pay_settings( $type );
+    if (!$settings) return false;
 
-	$settings = wppay_pay_settings( $type );
+    $args = array();
 
-	if( !$settings ) return false;
+    foreach ($settings['fields'] as $key => $val) {
+        $args[$key] = $val['default'];
+    }
 
-	$args = array();
-
-	foreach($settings['fields'] as $key => $val){
-		$args[$key] = $val['default'];
-	}
-
-	return $args;
+    return $args;
 }
 
 function wppay_send_mail($email, $subject, $html, $from = '', $name = '' ){

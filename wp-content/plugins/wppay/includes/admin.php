@@ -55,17 +55,56 @@ class Wpadmin extends Template
                 )
             )
         );
+
+        if (in_array($this->current, array('paypal', 'mailgun'))) {
+            $this->catch_config();
+        }
     }
-    
+
     /**
      * tmplPayPal
      */
     public function tmplPayPal()
     {
-        $args = elp_pay_settings('paypal');
+        $args = wppay_pay_settings('paypal');
         ?>
-<h1>Pay Pal settings</h1>
-        <?php
+        <form action="" method="POST">
+            <?php wp_nonce_field('wppay_paypal_config', 'wppay_setting_action'); ?>
+            <?php 
+            foreach ($args['fields'] as $key => $val):
+                if ($val['type'] == 'text') {
+                    $this->textField(
+                        $key,
+                        array(
+                            'label'       => $val['name'],
+                            'id'          => $key,
+                            'value'       => $val['default'],
+                            'description' => $val['description'],
+                            'class'       => 'regular-text'
+                        )
+                    );
+                } elseif ($val['type'] == 'select') {
+                    $this->dropDownField(
+                        $key,
+                        array(
+                            'label'       => $val['name'],
+                            'selected'    => $val['default'],
+                            'id'          => $key,
+                            'values'      => $val['values'],
+                            'description' => $val['description'],
+                        )
+                    );
+                }
+            endforeach;
+
+            $this->btn(
+                'sr-config-submit',
+                array(
+                    'id' => 'sr-config-submit'
+                )
+            );?>
+        </form>
+	<?php
     }
 
     /**
@@ -73,21 +112,22 @@ class Wpadmin extends Template
      */
     public function tmplOrder()
     {
-        ?>
-        <h1>Orders page</h1>
-        <?php
+        include_once( WPPAY_PATH . 'includes/page-order.php');
     }
-    
+
     /**
      * tmplDashboard
      */
     public function tmplDashboard()
     {
         ?>
-        <h1>Dashboard</h1>
+            <h1>Dashboard<?php _e('Current Time:', 'sr')?> <?php echo date('d.m.Y H:i:s')?></h1>
         <?php
     }
-    
+
+    /**
+     * tmplMailgun
+     */
     public function tmplMailgun()
     {
         ?>
@@ -95,29 +135,34 @@ class Wpadmin extends Template
         <?php
     }
 
+    /**
+     * getTemplate
+     * 
+     * @return boolean
+     */
     public function getTemplate()
     {
         $current = $this->current;
-        
+
         $tmpls = $this->tmpls;
         $argc  = $this->menu;
         if (!isset($tmpls[$current])) {
             return false;
         }
-        
+
         $cancel = false;
         foreach ($argc as $key => $val) {
             if ($cancel) {
                 continue;
             }
-            
+
             if ($key == $current) {
-                $this->title = $val['title'];                
+                $this->title = $val['title'];
                 $this->description = $val['description'];
                 $this->icon = $val['icon'];
                 $cancel = true;
             }
-            
+
             if (isset($val['submenu'])) {
                 foreach($val['submenu'] as $skey => $sval) {
                     if ($skey == $current) {
@@ -140,6 +185,21 @@ class Wpadmin extends Template
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * catch_config
+     */
+    private function catch_config()
+    {
+        if (!isset($_POST['wppay_setting_action'])) {
+            return false;
+        }
+
+        if (wp_verify_nonce($_POST['wppay_setting_action'], 'wppay_paypal_config')) {
+            wppay_pay_save_setting('paypal', $_POST);
+            $this->message = __('Paypal settings have been saved!', 'elp');
         }
     }
 }

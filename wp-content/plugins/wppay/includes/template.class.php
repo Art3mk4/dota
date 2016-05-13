@@ -125,9 +125,7 @@ class Template
     private function sidebar( ) {
 
         ?>
-
-        <div id="app-sidebar-back"></div>
-        <div id="app-sidebar-wrap">
+        <div class="col-md-2">
             <?php echo $this->createMenu() ?>
         </div>
 
@@ -135,26 +133,29 @@ class Template
 
     }
 
-    private function header() {
+    private function header()
+    {
         ?>
-        <div class="wrap">
-            <?php $this->sidebar() ?>
+        <div class="wrap content">
+            <div class="row">
+                <?php $this->sidebar() ?>
+                <div class="col-md-10">
+                <h2>
+                    <span class="fa fa-<?php echo $this->icon ?>"></span> <?php echo $this->title ?> <?php do_action('sr_action_' . $this->current)?>
+                </h2>
+                <div class="description"><?php echo $this->description ?></div>
+                <div class="content-main">
+                    <?php
 
-        <div class="page-content">
-
-            <h2><span class="fa fa-<?php echo $this->icon ?>"></span> <?php echo $this->title ?> <?php do_action('sr_action_' . $this->current)?></h2>
-            <div class="description"><?php echo $this->description ?></div>
-            <div class="content-main">
-                <?php
-
-                if( $this->message != '' )
-                    printf('<div class="alert alert-%s alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="%s">
-                                <span aria-hidden="true">&times;</span></button>
-                                %s
-                            </div>',
-                        $this->message_type, __('Close', 'sr'), $this->message
-                    );
+                    if( $this->message != '' ) {
+                        printf('<div class="alert alert-%s alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="%s">
+                                    <span aria-hidden="true">&times;</span></button>
+                                    %s
+                                </div>',
+                            $this->message_type, __('Close', 'sr'), $this->message
+                        );
+                    }
     }
 
     /**
@@ -162,6 +163,7 @@ class Template
      */
     private function footer() {
             ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,13 +175,14 @@ class Template
      */
     private function createMenu()
     {
-
         $current = $this->current;
         $items = $this->menu;
 
-        $return = "<nav class='navbar navbar-default'><div class='container-fluid'><ul class='nav navbar-nav list-inline'>";
+        $return = "<nav class='navbar navbar-default'>"
+                    . "<div class='container-fluid'>"
+                        . "<ul class='nav nav-pills nav-stacked'>";
 
-        foreach($items as $slug => $args) {
+        foreach ($items as $slug => $args) {
             $sub_result = $class = '';
             $sub_current = false;
             $class = ($current == $slug) ? 'item-active' : '';
@@ -227,42 +230,38 @@ class Template
 
 	}
 
-	public function textField( $name = '', $args = array(), $layout = true ){
+	public function textField($name = '', $args = array(), $layout = true)
+        {
+            $defaults = array(
+                'label'       => '',
+		'placeholder' => '',
+		'id'          => '',
+		'value'       => '',
+		'description' => '',
+		'readonly'    => false,
+		'class'       => 'large-text',
+		'maxlength'   => '',
+                'text_after'  => '',
+                'type'        => 'text'
+            );
 
-		$defaults = array(
-			'label'         => '',
-			'placeholder'   => '',
-			'id'            => '',
-			'value'         => '',
-			'description'   => '',
-			'readonly'      => false,
-			'class'         => 'large-text',
-			'maxlength'     => '',
-            'text_after'    => '',
-            'type'          => 'text'
-		);
+            $args = wp_parse_args( $args, $defaults );
+            $readonly = ($args['readonly']) ? 'readonly="readonly"' : '';
+            $result = '<div class="form-group">'
+                            . '<label for="' . $args['id'] . '">' . $args['label'] . ':</label>'
+                            . '<input id="' . $args['id'] . '" type="'
+                            . $args['type'] . '" value="' . $args['value']
+                            . '" name="' . $name . '" class="form-control ' . $args['class']
+                            . '" ' . $readonly . ' placeholder="' . $args['placeholder']
+                            . '">' . $args['text_after'] . '<p class="help-block">'
+                            . $args['description'] . '</p>'
+                        . '</div>';
 
-		$args = wp_parse_args( $args, $defaults );
+            if ($layout) {
+                echo $result;
+            }
 
-		$readonly = ($args['readonly']) ? 'readonly="readonly"' : '';
-
-		$result = '<tr valign="top">
-					    <th scope="row">
-						    <label for="' . $args['id'] . '">' . $args['label'] . ':</label>
-					    </th>
-					    <td>
-						    <input id="' . $args['id'] . '" type="' . $args['type'] . '" value="' . $args['value'] .
-                            '" name="' . $name . '" class="' . $args['class'] . '" ' . $readonly . ' placeholder="' . $args['placeholder'] . '">
-						    ' . $args['text_after'] . '
-						    <p class="description">' . $args['description'] . '</p>
-					    </td>
-				    </tr>';
-
-		if( $layout )
-			echo $result;
-
-		return $result;
-
+            return $result;
 	}
 
 	public function textTextArea( $name = '', $args = array(), $layout = true ){
@@ -298,46 +297,49 @@ class Template
 
 	}
 
-	public function dropDownField( $name = '', $args = array(), $layout = true ){
+        /**
+         * dropDownField
+         * 
+         * @param type $name
+         * @param type $args
+         * @param type $layout
+         * @return string
+         */
+	public function dropDownField($name = '', $args = array(), $layout = true)
+        {
+            $defaults = array(
+                'label'       => '',
+                'selected'    => '',
+                'id'          => '',
+                'values'      => array(),
+                'description' => '',
+                'readonly'    => false,
+                'class'       => 'large-select',
+            );
 
-		$defaults = array(
-			'label'         => '',
-			'selected'      => '',
-			'id'            => '',
-			'values'        => array(),
-			'description'   => '',
-			'readonly'      => false,
-			'class'         => 'large-select',
-		);
+            $args = wp_parse_args($args, $defaults);
+            $readonly = ($args['readonly']) ? 'readonly="readonly"' : '';
 
-		$args = wp_parse_args( $args, $defaults );
+            $result = '<div class="form-group"><label for="' . $args['id'] . '">'
+                        . $args['label'] . ':</label>
+                        . <select id="' . $args['id'] . '" name="' . $name 
+                        . '" class="form-group' . $args['class'] . '" ' . $readonly . '>';
 
-		$readonly = ($args['readonly']) ? 'readonly="readonly"' : '';
+            if (count($args['values'])) {
+                foreach( $args['values'] as $key => $val ) {
+                    $selected = $key == $args['selected'] ? 'selected="selected"' : '';
+                    $result .= '<option value="' . $key . '" ' . $selected . '>' . $val . '</option>';
+                }
+            }
 
-		$result = '<tr valign="top">
-					    <th scope="row">
-						    <label for="' . $args['id'] . '">' . $args['label'] . ':</label>
-					    </th>
-					    <td>
-						    <select id="' . $args['id'] . '" name="' . $name . '" class="' . $args['class'] . '" ' . $readonly . '>';
+            $result .= '</select>
+                <p class="help-block">' . $args['description'] . '</p></div>';
 
-		if( count($args['values']) )
-			foreach( $args['values'] as $key => $val ) {
+            if ($layout) {
+                echo $result;
+            }
 
-				$selected = $key == $args['selected'] ? 'selected="selected"' : '';
-
-				$result .= '<option value="' . $key . '" ' . $selected . '>' . $val . '</option>';
-			}
-
-		$result .= '</select>
-		            <p class="description">' . $args['description'] . '</p>
-					    </td>
-				    </tr>';
-
-		if($layout)
-			echo $result;
-
-		return $result;
+            return $result;
 	}
 
 	public function checked( $name = '', $args = array(), $layout = true ) {
