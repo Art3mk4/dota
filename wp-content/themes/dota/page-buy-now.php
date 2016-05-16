@@ -1,5 +1,6 @@
 <?php
-get_header(); ?>
+get_header();
+?>
 <header id="buy-header">
     <div class="container">
         <div class="row">
@@ -25,7 +26,7 @@ get_header(); ?>
                                     <?php endif;?>
                                 </div>
                                 <div id="download-3">
-                                    <a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+                                    <a href="<?php echo get_permalink(7) . '?download_file=yes'?>" class="btn text-center download-button">
                                         Download now
                                     </a>
                                 </div>

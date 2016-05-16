@@ -1,0 +1,4 @@
+<FilesMatch "wp-content/wppay/files/.*/.*">
+    Order Allow,Deny
+    Deny from All
+</FilesMatch>

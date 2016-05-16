@@ -62,20 +62,24 @@ function wppay_redirect_to_payment(){
 }
 add_action('wppay_redirect_to_payment', 'wppay_redirect_to_payment');
 
-function wppay_redirect_to_payment_single(){
+function wppay_redirect_to_payment_single()
+{
+    if (!isset($_POST['wppay_pay_single'])) {
+        return false;
+    }
 
-    if( !isset($_POST['wppay_pay_single']) ) return false;
+    $email    = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
+    $type     = isset($_POST['pay_type']) ? $_POST['pay_type'] : 'paypal';
+    $amount   = isset($_POST['amount']) ? wppay_floatvalue($_POST['amount']) : 0.00;
+    $currency = isset($_POST['currency']) ? trim($_POST['currency']) : 'USD';
+    $name     = isset($_POST['name']) ? trim($_POST['name']) : 'Sample Name';
+    $desc     = isset($_POST['desc']) ? trim($_POST['desc']) : 'Sample Description';
 
-    $email     = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
-    $type      = isset($_POST['pay_type']) ? $_POST['pay_type'] : 'paypal';
-    $amount    = isset($_POST['amount']) ? wppay_floatvalue($_POST['amount']) : 0.00;
-    $currency  = isset($_POST['currency']) ? trim($_POST['currency']) : 'USD';
-    $name      = isset($_POST['name']) ? trim($_POST['name']) : 'Sample Name';
-    $desc      = isset($_POST['desc']) ? trim($_POST['desc']) : 'Sample Description';
+    $args = wppay_current_pay_settings($type);
 
-    $args = wppay_current_pay_settings( $type );
-
-    if( !$args || !$email ) return false;
+    if (!$args || !$email ) {
+        return false;
+    }
 
     $obj = new \Paypal\Paypal();
     $obj->setUsername($args['username'])
@@ -228,3 +232,60 @@ function wppay_get_tnx_details($token, $type){
     pr($response);
 }
 add_action('wppay_get_tnx_details', 'wppay_get_tnx_details', 10, 2);
+
+function wppay_download_file()
+{
+    if (!isset($_GET['download_file']) || $_GET['download_file'] != 'yes') {
+        return ;
+    }
+
+    $file = WPPAY_PATH . 'files/guide.pdf';
+    $fileBasename = basename($file);
+
+    if (file_exists($file)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $fileBasename . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+        exit;
+    }
+}
+add_action('wp', 'wppay_download_file');
+
+function wppay_plugin_handler()
+{
+    if (!isset($_POST['wppay_do_pay'])) {
+        return false;
+    }
+
+    $quide = get_site_option('wppay_guide_setting');
+    $amount = 0.01;
+    if (isset($guide['price'])) {
+        $amount = $guide['price']; // получение цены за товар
+    }
+    $name = 'guide'; // наименование товара или заказа
+    $desc = 'esport_guide'; // описание товара
+    $email = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
+
+    if (!$email) {
+        $_POST['error_msg'] = 'The Email was filled wrong!';
+        return false;
+    }
+
+    $_POST = array(
+        'email'            => $email,
+        'type'             => 'paypal',
+        'currency'         => 'USD',
+        'amount'           => $amount,
+        'name'             => $name,
+        'desc'             => $desc,
+        'wppay_pay_single' => ''
+    );
+
+    do_action('wppay_redirect_to_payment_single');
+}
+add_action('wp', 'wppay_plugin_handler');

@@ -1,6 +1,7 @@
 <?php
-
-get_header(); ?>
+get_header(); 
+$guide = get_site_option('wppay_guide_setting');
+?>
 	<header id="header" class="text-center">
         <div class="container">
             <div class="row">
@@ -30,11 +31,13 @@ get_header(); ?>
                             <li><i></i>Success stories of experienced betters</li>
                         </ul>
                     </div>
+                    <?php if (isset($guide['price'])):?>
                     <div id="download-2" class="col-lg-6 col-centered">
                         <a href="<?php echo get_permalink(7)?>"class="btn download-button text-center">
-                            Buy now for only <span class="color-orange">$9</span>
+                            Buy now for only <span class="color-orange">$<?php echo $guide['price']?></span>
                         </a>
                     </div>
+                    <?php endif?>
                 </div>
             </div>
         </div>
@@ -111,13 +114,13 @@ get_header(); ?>
 										<div id="papyrus-text">
 											<p>Are you ready to convert your passion to online games into dollars?</p>
 										</div>
+                                                                                <?php if (isset($guide['price'])):?>
 										<div id="download-3">
-											
-												<a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
-													Buy now for only <span class="color-orange">$9</span>
-												</a>
-											
+                                                                                    <a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+                                                                                        Buy now for only <span class="color-orange">$<?php echo $guide['price'];?></span>
+                                                                                    </a>
 										</div>
+                                                                                <?php endif;?>
 										<div id="social-buttons">
 											<div id="social-buttons-text">
 												Join us:
