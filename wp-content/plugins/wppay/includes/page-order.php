@@ -8,10 +8,10 @@
 
 global $wpdb, $user_ID;
 
+$page = 'wpPay';
 if( isset($_GET['order']) ) {
 
     $id = intval($_GET['order']);
-    $page = 'wppay';
 
     $tnx = $wpdb->get_row(
         $wpdb->prepare("SELECT * FROM {$wpdb->transaction} WHERE id = %d", $id)
@@ -111,7 +111,6 @@ if( isset($_GET['order']) ) {
                 </thead>
                 <?php
                 include(dirname(__FILE__) . "/pagination.php");
-
                 $param_s = "";
                 $orderby_sql = "ORDER BY date DESC";
                 $count = $wpdb->get_var("SELECT COUNT(id) FROM {$wpdb->transaction}");

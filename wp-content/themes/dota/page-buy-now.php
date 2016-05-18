@@ -1,5 +1,24 @@
 <?php
 get_header();
+if (!isset($_GET['token']) || !isset($_GET['fail']) || $_GET['fail'] == 'yes') {
+    $_SESSION = array();
+}
+
+function allowUpload()
+{
+    if ($_GET['fail'] == 'yes') {
+    	return false;
+    }
+    if (!isset($_SESSION['TOKEN'])) {
+    	return false;
+    }
+    if ($_SESSION['TOKEN'] != $_GET['token']) {
+    	return false;
+    }
+    
+    return true;
+}
+
 ?>
 <header id="buy-header">
     <div class="container">
@@ -12,12 +31,13 @@ get_header();
                 </div>
             </div>
         </div>
+        <?php if (allowUpload()):?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="text-center">
                     <div id="papyrus">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5 col-md-offset-2">
                                 <div id="papyrus-text-thanks">
                                     <?php if (have_posts()):?>
                                         <?php
@@ -43,7 +63,7 @@ get_header();
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6 hidden-sm hidden-xs">
+                            <div class="col-md-5 hidden-sm hidden-xs">
                                 <div id="esports-guide">
                                     <img class="img-responsive" src="<?php echo get_template_directory_uri()?>/images/-8.png" />
                                 </div>
@@ -53,6 +73,7 @@ get_header();
                 </div>
             </div>
         </div>
+        <?php endif;?>
     </div>
 </header>
 <div id="buy-main" class="text-center">
@@ -200,7 +221,7 @@ than 18 million registered users
 <footer>
     <div id="footer-bottom">
         <div id="footer-text"class="text-center">
-            <p>© 2015 eSports Betting Club</p>
+            <p>© <?php echo date('Y');?> eSports Betting Club</p>
         </div>
     </div>
 </footer>

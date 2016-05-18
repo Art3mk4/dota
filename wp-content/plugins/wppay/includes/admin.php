@@ -201,6 +201,16 @@ class Wpadmin extends Template
                 'name'         => __('Guide price', 'wppay'),
                 'default'     => '',
                 'description' => __('Set up price for Guide', 'wppay')
+            ),
+            'name' => array(
+            	'name' => __('Guide name', 'wppay'),
+            	'default' => '',
+            	'description' => __('Set up name', 'wppay')
+            ),
+            'description' => array(
+            	'name' => __('Guide description', 'wppay'),
+            	'default' => '',
+            	'description' => __('Set up description', 'wppay')
             )
         );?>
 
@@ -305,7 +315,7 @@ class Wpadmin extends Template
         }
 
         if (wp_verify_nonce($_POST['wppay_setting_action'], 'wppay_guide_config')) {
-            $args = $this->fill(array('price'));
+            $args = $this->fill(array('price', 'name', 'description'));
             update_site_option('wppay_guide_setting', $args);
             $this->message = __('Guide settings have been saved!', 'wppay');
         }

@@ -35,9 +35,13 @@ $guide = get_site_option('wppay_guide_setting');
                     </div>
                     <?php if (isset($guide['price'])):?>
                     <div id="download-2" class="col-lg-6 col-centered">
-                        <a href="<?php echo get_permalink(7)?>"class="btn download-button text-center">
+                        <!--a href="<?php echo get_permalink(7)?>"class="btn download-button text-center">
                             Buy now for only <span class="color-orange">$<?php echo $guide['price']?></span>
-                        </a>
+                        </a-->
+                        <form method="POST">
+                                                                                    	<input type="hidden" name="wppay_do_pay" value="wppay_do_pay" />
+                                                                                    	<button class="btn text-center download-button" type="submit" >Buy now for only <span class="color-orange">$<?php echo $guide['price'];?></span></button>
+                                                                                    </form>
                     </div>
                     <?php endif?>
                 </div>
@@ -88,7 +92,7 @@ $guide = get_site_option('wppay_guide_setting');
 				<div class="col-xs-12">
 					<div id="plinth-block" class="col-lg-10 col-centered">
 						<div id='plinth-text' class="text-center color-white">
-							<p>eSports is getting more and more popular nowadays with lots of international championships being held all over the world. These events attract thousands of betters who win millions of dollars in tote every time. The revenues of online games industry are growing much faster than those of sport industry.</p>
+							<p>Esports is getting more and more popular nowadays with lots of international championships being held all over the world. These events attract thousands of betters who win millions of dollars in tote every time. The revenues of online games industry are growing much faster than those of sport industry.</p>
 							<p>Numerous bookmakers offer betting for most powerful championships, such as Dota, StarCraft, League of Legends, etc. The cyber market is young and rapidly growing, so indexes are quite instable yet. If you download our Guide, you’ll learn how to use this disbalance in your favor and earn good money on it.
 
 							Now you can combine moneymaking and watching your favorite games in real time!</p>
@@ -118,9 +122,13 @@ $guide = get_site_option('wppay_guide_setting');
 										</div>
                                                                                 <?php if (isset($guide['price'])):?>
 										<div id="download-3">
-                                                                                    <a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
+                                                                                    <!--a href="<?php echo get_permalink(7)?>" class="btn text-center download-button">
                                                                                         Buy now for only <span class="color-orange">$<?php echo $guide['price'];?></span>
-                                                                                    </a>
+                                                                                    </a-->
+                                                                                    <form method="POST">
+                                                                                    	<input type="hidden" name="wppay_do_pay" value="wppay_do_pay" />
+                                                                                    	<button class="btn text-center download-button" type="submit" >Buy now for only <span class="color-orange">$<?php echo $guide['price'];?></span></button>
+                                                                                    </form>
 										</div>
                                                                                 <?php endif;?>
 										<div id="social-buttons">
@@ -148,7 +156,7 @@ $guide = get_site_option('wppay_guide_setting');
 		</div>
 		<div id="footer-bottom">
 			<div id="footer-text"class="text-center">
-				<p>© 2015 eSports Betting Club</p>
+				<p>© <?echo date('Y');?> eSports Betting Club</p>
 			</div>
 		</div>
 	</footer>

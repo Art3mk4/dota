@@ -77,7 +77,7 @@ function wppay_redirect_to_payment_single()
 
     $args = wppay_current_pay_settings($type);
 
-    if (!$args || !$email ) {
+    if (!$args) { /*|| !$email*/ 
         return false;
     }
 
@@ -90,14 +90,13 @@ function wppay_redirect_to_payment_single()
         ->setBorderColor($args['borderColor'])
         ->setPaymentType('Sale')
         ->setType($type)
-        ->setEmail($email)
+        /*->setEmail($email)*/
         ->setAmount($amount)
         ->setFullamount($amount)
         ->setCurrency($currency)
         ->setName($name)
         ->setDescription($desc)
         ->setSubscription(0);
-    
     $obj->SetExpressCheckout();
 }
 add_action('wppay_redirect_to_payment_single', 'wppay_redirect_to_payment_single');
@@ -262,19 +261,26 @@ function wppay_plugin_handler()
         return false;
     }
 
-    $quide = get_site_option('wppay_guide_setting');
+    $guide= get_site_option('wppay_guide_setting');
     $amount = 0.01;
     if (isset($guide['price'])) {
         $amount = $guide['price']; // получение цены за товар
     }
     $name = 'guide'; // наименование товара или заказа
+    if (isset($guide['name'])) {
+    	$name = $guide['name'];
+    }
+    
     $desc = 'esport_guide'; // описание товара
+    if (isset($guide['description'])) {
+    	$desc = $guide['description'];
+    }
     $email = isset($_POST['email']) && is_email($_POST['email']) ? trim($_POST['email']) : false;
 
-    if (!$email) {
+    /*if (!$email) {
         $_POST['error_msg'] = 'The Email was filled wrong!';
         return false;
-    }
+    }*/
 
     $_POST = array(
         'email'            => $email,

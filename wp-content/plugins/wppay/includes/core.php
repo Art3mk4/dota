@@ -150,6 +150,24 @@ function wppay_default_settings(){
 					'description' => 'Enter borderColor in your paypal',
 					'type' 		  => 'text'
 				),
+				'returnUrl' => array(
+					'default'     => '',
+					'name' 	      => 'Return Url',
+					'description' => 'Enter return Url',
+					'type'	      => 'text'
+				),
+				'cancelUrl' => array(
+					'default'     => '',
+					'name'	      => 'cancelUrl',
+					'description' => 'Enter cancel Url',
+					'type'        => 'text'
+				),
+				'notifyUrl' => array(
+					'default'     => '',
+					'name'        => 'notifyUrl',
+					'description' => 'Enter notify Url',
+					'type'        => 'text'
+				)
 			),
 		)
 	);

@@ -20,7 +20,7 @@ Version: 1.5
   src: local('Defused'), local('Defused'), url('fonts/defused.ttf');
 }
 body {
-	font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 #header {
     background: url('images/-6.jpg') no-repeat center;
@@ -79,39 +79,84 @@ body {
 }
 #download-3 {
 	padding-top: 36px;
+	padding-bottom: 15px;
 }
 #choose-bookmaker li {
 	font-style: italic;
 	font-size: 25px;
 }
 .download-button {
-	background: url('images/-30--4.jpg') no-repeat center;
-	background-size: cover;
-	text-shadow: 0 1px 0 rgba(66, 16, 8, 0.75);
-	font-size: 11px;
-	font-weight: 700;
-	font-style: italic;
-	color: white;
-	text-transform: uppercase;
-	line-height: 18px;
-	height: 33px;
-	width: 185px
+    background: url('images/buttons.jpg') no-repeat center 0px;
+    background-size: cover;
+    text-shadow: 0 1px 0 rgba(66, 16, 8, 0.75);
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    line-height: 25px;
+    height: 40px;
+    width: 185px
 }
-@media (min-width: 480px) {
-	.download-button {
-		line-height: 36px;
-		height: 50px;
-		width: 290px;
-		font-size: 15px;
-	}
+.download-button:focus {
+	background: url('images/buttons.jpg') no-repeat center 0px;
+	background-size: cover;
+	color: white;
+}
+.download-button:active {
+	background: url('images/buttons.jpg') no-repeat center 0px;
+	background-size: cover;
+	color: white;
 }
 .download-button:hover {
-	background: url('images/-30--5.jpg') no-repeat center;
+	background: url('images/buttons.jpg') no-repeat center 0px;
 	background-size: cover;
 	color: white;
 }
-.download-button:hover .color-orange {
-	color:white;
+@media (min-width: 480px) {
+    .download-button {
+        line-height: 44px;
+        height: 58px;
+        width: 270px;
+        font-size: 14px;
+    }
+    .download-button:hover {
+        background: url('images/buttons.jpg') no-repeat center -59px;
+        background-size: cover;
+        text-shadow: 0 0 10px white;
+        color: white;
+    }
+    .download-button:active {
+        background: url('images/buttons.jpg') no-repeat center -118px;
+        background-size: cover;
+        color: white;
+    }
+    .download-button:focus {
+        color: white;
+    }
+    .download-button:hover .color-orange {
+            color:white;
+    }
+}
+#download-3 > form > .download-button {
+    background: url('images/buttons.jpg') no-repeat center -121px;
+    background-size: cover;
+}
+@media (min-width: 480px) {
+    #download-3 > form > .download-button {
+        background: url('images/buttons.jpg') no-repeat center -177px;
+        background-size: cover;
+    }
+    #download-3 > form > .download-button:hover {
+        background: url('images/buttons.jpg') no-repeat center -236px;
+        background-size: cover;
+        text-shadow: 0 0 10px white;
+        color: white;
+    }
+    #download-3 > form > .download-button:active {
+        background: url('images/buttons.jpg') no-repeat center -294px;
+        background-size: cover;
+        color: white;
+    }
 }
 .color-orange {
 	color: #f0a856;
@@ -184,7 +229,7 @@ ul li i:before {
 }
 @media(min-width: 480px) {
 	.fire-text {
-		height: 140px;
+		height: 240px;
 	}
 }
 .circle-text {
@@ -259,13 +304,15 @@ ul li i:before {
 	font-family: Papyrus;
 	font-size: 24px;
 	font-weight: 400;
+	margin: 0 20px 0 20px;
 }
 @media (min-width: 480px) {
-	#papyrus-text {
-		font-size: 50px;
-		padding-top: 125px;
-		line-height: 50px;
-	}
+    #papyrus-text {
+            font-size: 50px;
+            padding-top: 125px;
+            line-height: 50px;
+            margin: 10px;
+    }
 }
 #social-buttons {
 	display: inline-block;
@@ -330,18 +377,20 @@ ul li i:before {
 	background: url('images/content.jpg') no-repeat top center;
     background-size: cover;
 }
+#papyrus-text-thanks h1 {
+	font-weight: 700;
+}
 #papyrus-text-thanks {
 	padding-top: 0px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
 	color: #5f3606;
 	font-family: Papyrus;
 	font-size: 30px;
-	font-weight: 400;
 }
 @media (min-width: 480px) {
 	#papyrus-text-thanks {
 		font-size: 30px;
-		padding-top: 50px;
+		padding-top: 100px;
 		line-height: 50px;
 	}
 }
@@ -358,9 +407,10 @@ ul li i:before {
 	text-transform: uppercase;
 }
 .odd-service {
-	background: url('images/-1--2.png') no-repeat top center;
+	background-color: rgba(196, 196, 196, 0.08);
+	/*background: url('images/-1--2.png') no-repeat top center;
 	background-size: cover;
-	/*padding: 10px;*/
+	padding: 10px;*/
 }
 .logo {
 	padding-top: 5px;

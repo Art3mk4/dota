@@ -220,10 +220,10 @@ class Paypal{
      * @param string $cancel
      */
     public function setURL( $return = '', $cancel = '', $notify = '' ){
-
-        $this->returnURL = ($return != '') ? $return : home_url('/thankyou/?fail=no');
-        $this->cancelURL = ($cancel != '') ? $cancel : home_url('/thankyou/?fail=yes');
-        $this->notifyURL = ($notify != '') ? $notify : home_url('/?wppay=paypal');
+	$args = wppay_current_pay_settings('paypal');
+        $this->returnURL = (isset($args['returnUrl'])) ? home_url($args['returnUrl']) : $return;
+        $this->cancelURL = (isset($args['cancelUrl'])) ? home_url($args['cancelUrl']) : $cancel;
+        $this->notifyURL = (isset($args['notifyUrl'])) ? home_url($args['notifyUrl']) : $notify;
     }
 
     /**
