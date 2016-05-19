@@ -181,7 +181,7 @@ jQuery( function($) {
         $.ajaxQueue({
             url:  ajaxurl,
             data: {
-                action: 'elp_delete_tnx',
+                action: 'wppay_delete_tnx',
                 id: $(this).data('pid')
             },
             type: "POST",
